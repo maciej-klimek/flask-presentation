@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu ul li a:hover {
+    color: #ccc;
+}
+
+.centertext {
+    text-align: justify;
+    margin: 0 auto; /* Ustawienie marginesów poziomych na auto powoduje wyśrodkowanie elementu */
+    width: fit-content; /* Dopasowanie szerokości do zawartości */
+}
+
+/* Styl dla produktów niedostępnych */
+.not-available {
+    color: red; /* Ustawienie koloru tekstu na czerwony */
+}

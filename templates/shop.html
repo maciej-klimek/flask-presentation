@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content%}
+<h3>Available Products</h3>
+<ul>
+    {% for product in products %}
+        <li {% if product.stock == 0 %}class="not-available"{% endif %}>
+            {{ product.name }} - {{ product.price }}zł {% if product.stock == 0 %}(Niedostępny){% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

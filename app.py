@@ -2,24 +2,24 @@ from flask import Flask, render_template
 
 posts_list = [
     {
-        'title': 'Szampan',
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum ex sit amet aliquet suscipit. Sed ac ligula nec est commodo convallis.'
+        'title': 'Paragraf 1',
+        'content': 'Rój pszczół staje się niczyim, jeżeli właściciel nie odszukał go przed upływem trzech dni od dnia wyrojenia. Właścicielowi wolno w pościgu za rojem wejść na cudzy grunt, powinien jednak naprawić wynikłą stąd szkodę.'
     },
     {
-        'title': 'Post 2: Dolor Sit Amet',
-        'content': 'Donec placerat, elit a consequat vehicula, eros dolor dapibus purus, id facilisis ligula neque eget leo. Vivamus lacinia eleifend ante, id tincidunt eros efficitur vel.'
+        'title': 'Paragraf 2',
+        'content': 'Jeżeli rój osiadł w cudzym ulu nie zajętym, właściciel może domagać się wydania roju za zwrotem kosztów'
     },
     {
-        'title': 'Post 3: Consectetur Adipiscing',
-        'content': 'Curabitur convallis turpis non libero pretium, vitae venenatis sapien commodo. Vestibulum at semper mauris. In scelerisque dui non finibus vulputate.'
+        'title': 'Paragraf 3',
+        'content': 'Jeżeli rój osiadł w cudzym ulu zajętym, staje się on własnością tego, czyją własnością był rój, który się w ulu znajdował. Dotychczasowemu właścicielowi nie przysługuje w tym wypadku roszczenie z tytułu bezpodstawnego wzbogacenia. '
     }
 ]
 
 products_list = [
-    {"name": "Janosik 7.3%", "price": 10, "stock": 5},
-    {"name": "Blachotrapez", "price": 20, "stock": 4},
-    {"name": "Mega rollo mieszany mieszany", "price": 15, "stock": 3},
-    {"name": "Kurczak curry z mekonga", "price": 25, "stock": 0}
+    {"name": "Janosik 7.3%", "price": 3.70, "stock": 5},
+    {"name": "Blachotrapez", "price": 100, "stock": 4},
+    {"name": "Mega rollo mieszany mieszany", "price": 20, "stock": 3},
+    {"name": "Kurczak curry z mekonga", "price": 35, "stock": 0}
 ]
 
 app = Flask(__name__)

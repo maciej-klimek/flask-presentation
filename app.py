@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for, get_flashed_messages
 
 posts_list = [
     {
@@ -23,17 +23,24 @@ products_list = [
 ]
 
 app = Flask(__name__)
+app.secret_key="klucz"
 @app.route('/')
 def index():
     return render_template('index.html', name="Strona główna", posts=posts_list)
 
 @app.route('/contact')
-def contant():
+def contact():
     return render_template('contact.html',name="Kontakt", adress="Kalinowa 7", phone="530708858")
 
 @app.route('/shop')
 def shop():
+    flash("Witamy w sklepie!")
     return render_template('shop.html',name="Sklep", products=products_list)
+
+@app.route('/like_facebook', methods=['POST'])
+def like_facebook():
+    flash('Dzięki za polubienie!')
+    return redirect(url_for('contact'))
 
 if __name__ == '__main__':
     app.run(debug=True)

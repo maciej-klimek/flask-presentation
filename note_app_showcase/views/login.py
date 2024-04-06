@@ -1,38 +1,50 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from models.models import db, User
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
 
 bp = Blueprint('login_bp', __name__)
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Register')
+
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    form = LoginForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
 
-        # Check if the user exists
         user = User.query.filter_by(username=username).first()
 
-        # Verify the password if the user exists
         if user and check_password_hash(user.password, password):
-            # Store user information in the session
             session['user_id'] = user.id
             session['username'] = user.username
             return redirect(url_for('notes_bp.notes'))
         else:
-            return render_template('login.html', error="Nieprawidłowe hasło lub username.")
-    else:
-        return render_template('login.html')
+            return render_template('login.html', form=form, error="Invalid username or password.")
+    
+    return render_template('login.html', form=form)
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
 
         # Check if the username already exists
         if User.query.filter_by(username=username).first():
-            return render_template('register.html', error="Taki username już istnieje.")
+            return render_template('register.html', form=form, error="Username already exists.")
 
         # Create a new user
         hashed_password = generate_password_hash(password)
@@ -42,8 +54,7 @@ def register():
         
         return redirect(url_for('login_bp.login'))
     
-    # If it's a GET request or if the username already exists
-    return render_template('register.html')
+    return render_template('register.html', form=form)
 
 @bp.route('/logout')
 def logout():

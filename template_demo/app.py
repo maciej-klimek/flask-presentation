@@ -17,9 +17,10 @@ posts_list = [
 
 products_list = [
     {"name": "Janosik 7.3%", "price": 3.70, "stock": 5},
-    {"name": "Blachotrapez", "price": 100, "stock": 4},
+    {"name": "Blachotrapez", "price": 100, "stock": 0},
     {"name": "Mega rollo mieszany mieszany", "price": 20, "stock": 3},
-    {"name": "Kurczak curry z mekonga", "price": 35, "stock": 0}
+    {"name": "Kurczak curry z mekonga", "price": 35, "stock": 0},
+    #{"name": "Nissan Micra", "price": 3000, "stock": 1}
 ]
 
 app = Flask(__name__)
@@ -34,7 +35,6 @@ def contact():
 
 @app.route('/shop')
 def shop():
-    flash("Witamy w sklepie!")
     return render_template('shop.html',name="Sklep", products=products_list)
 
 @app.route('/like_facebook', methods=['POST'])

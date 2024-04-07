@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
-from flask_wtf.csrf import CSRFProtect  # Import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from models.models import Note, db

@@ -46,13 +46,11 @@
                             <p class="card-text">{{ note.content }}</p>
                     </div>
                     <form method="GET" action="{{ url_for('notes_bp.edit_note', note_id=note.id) }}" class="edit-btn">
-                        <!-- Include CSRF token -->
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-secondary" style="width: 100px;">Edytuj</button>
                     </form>
                     <form method="POST" action="{{ url_for('notes_bp.delete_note', note_id=note.id) }}"
                         class="delete-btn">
-                        <!-- Include CSRF token -->
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-danger" style="width: 75px;">Usuń</button>
                     </form>
